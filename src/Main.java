@@ -5,9 +5,8 @@ public class Main {
     public static void main(String[] args) {
 
         List<Integer> sortedList = new ArrayList<>() {};
-        List<Integer> preSortedListCount = new ArrayList<>() {};
-        List<Integer> preSortedList = new ArrayList<>() {};
         Integer temp;
+        Integer tempNew = 0;
         int index;
 
         List<Integer> list1 = new ArrayList<>() {};
@@ -27,21 +26,20 @@ public class Main {
         list2.add(15);
         list2.add(100);
 
-        preSortedList.addAll(list1);
-        preSortedList.addAll(list2);
-        preSortedListCount.addAll(preSortedList);
+        sortedList.addAll(list1);
+        sortedList.addAll(list2);
 
-        for (int i = 0; i < preSortedListCount.size(); i++){
+        for (int i = 0; i < sortedList.size(); i++){
             index = i;
-            temp = preSortedList.get(i);
-            for (int j = i+1; j < preSortedList.size(); j++) {
-                if (preSortedList.get(index) >= preSortedList.get(j)){
-                    temp = preSortedList.get(j);
+            temp = sortedList.get(i);
+            for (int j = i+1; j < sortedList.size(); j++) {
+                if (sortedList.get(index) >= sortedList.get(j)){
+                    tempNew = sortedList.get(j);
                     index = j;
                 }
             }
-            sortedList.add(temp);
-            preSortedList.remove(index);
+            sortedList.set(i, tempNew);
+            sortedList.set(index, temp);
         }
 
         for (int i = 0; i < sortedList.size(); i++) {
